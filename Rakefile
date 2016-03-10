@@ -1,3 +1,13 @@
+def mruby(name)
+  mruby_task = "mruby-#{name}"
+  task name => mruby_task
+  task mruby_task => "vendor/mruby" do
+    in_mruby do
+      sh "make #{name}"
+    end
+  end
+end
+
 task :default => :all
 
 desc "all"
@@ -9,26 +19,15 @@ file "bin/brtk" => "vendor/mruby/bin/brtk" do
   sh "cp vendor/mruby/bin/brtk bin/brtk"
 end
 
-file "vendor/mruby/bin/brtk" => "vendor/mruby" do
-  in_mruby do
-    sh "make"
-  end
-end
+file "vendor/mruby/bin/brtk" => "mruby-all"
+mruby :all
 
 
 desc "test"
-task :test => "vendor/mruby" do
-  in_mruby do
-    sh "make test"
-  end
-end
+mruby :test
 
 desc "clean"
-task :clean do
-  in_mruby do
-    sh "make clean"
-  end
-end
+mruby :clean
 
 file "vendor/mruby" do
   sh "git clone https://github.com/mruby/mruby.git vendor/mruby"
