@@ -17,7 +17,10 @@ end
 
 
 desc "test"
-task :test => ["all"] do
+task :test => "vendor/mruby" do
+  in_mruby do
+    sh "make test"
+  end
 end
 
 desc "clean"
