@@ -22,7 +22,6 @@ end
 file "vendor/mruby/bin/brtk" => "mruby-all"
 mruby :all
 
-
 desc "test"
 mruby :test
 
