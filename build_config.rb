@@ -5,7 +5,7 @@ else
 end
 rootdir = File.expand_path(File.dirname(__FILE__))
 
-MRuby::Build.new("brtk") do |conf|
+MRuby::Build.new do |conf|
   toolchain tool
 
   enable_debug
