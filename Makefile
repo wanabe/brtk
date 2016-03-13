@@ -1,4 +1,5 @@
-RAKE = ruby ./minirake
+RAKEOPT :=
+RAKE = ruby ./minirake $(RAKEOPT)
 
 all :
 	$(RAKE)

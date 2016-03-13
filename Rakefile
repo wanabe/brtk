@@ -3,7 +3,7 @@ def mruby(name)
   task name => mruby_task
   task mruby_task => "vendor/mruby" do
     in_mruby do
-      sh "make #{name}"
+      sh "./minirake #{name} #{ENV["RAKEOPT"]}"
     end
   end
 end
