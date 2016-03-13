@@ -88,7 +88,7 @@ module MiniRake
 
     # Invoke the task if it is needed.  Prerequites are invoked first.
     def invoke
-      puts "Invoke #{name} (already=[#{@already_invoked}], needed=[#{needed?}])" if $trace
+      puts "Invoke #{name} (already=[#{@already_invoked}], needed=[#{needed? rescue "?"}])" if $trace
       return if @already_invoked
       @already_invoked = true
       prerequisites = @prerequisites.collect{ |n| n.is_a?(Proc) ? n.call(name) : n }.flatten
