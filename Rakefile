@@ -8,6 +8,31 @@ def mruby(name)
   end
 end
 
+def in_mruby(&block)
+  brtk_root = File.expand_path(File.dirname(__FILE__))
+  ENV["MRUBY_CONFIG"] = "#{brtk_root}/build_config.rb"
+  Dir.chdir "vendor/mruby", &block
+end
+
+def github(repo)
+  base = File.basename(repo, ".git")
+  dir = "vendor/#{base}"
+  @vendors ||= []
+  @vendors << dir
+  file dir do
+    sh "git clone https://github.com/#{repo}.git #{dir}"
+  end
+end
+
+github "mobiruby/mruby-cfunc"
+github "ppibburr/mruby-allocate"
+github "ppibburr/mruby-girffi"
+github "ppibburr/mruby-gobject-introspection"
+github "ppibburr/mruby-gtk3"
+github "ppibburr/mruby-named-constants"
+github "ppibburr/mruby-rubyffi-compat"
+github "mruby/mruby"
+
 task :default => :all
 
 desc "all"
@@ -19,7 +44,7 @@ file "bin/brtk" => "vendor/mruby/bin/brtk" do
   sh "cp vendor/mruby/bin/brtk bin/brtk"
 end
 
-file "vendor/mruby/bin/brtk" => "mruby-all"
+file "vendor/mruby/bin/brtk" => @vendors + ["mruby-all"]
 mruby :all
 
 desc "test"
@@ -27,13 +52,3 @@ mruby :test
 
 desc "clean"
 mruby :clean
-
-file "vendor/mruby" do
-  sh "git clone https://github.com/mruby/mruby.git vendor/mruby"
-end
-
-def in_mruby(&block)
-  brtk_root = File.expand_path(File.dirname(__FILE__))
-  ENV["MRUBY_CONFIG"] = "#{brtk_root}/build_config.rb"
-  Dir.chdir "vendor/mruby", &block
-end
