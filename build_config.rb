@@ -14,14 +14,3 @@ MRuby::Build.new do |conf|
   conf.gembox 'default'
   conf.gem "#{rootdir}"
 end
-
-MRuby::Build.new('test') do |conf|
-  toolchain tool
-
-  enable_debug
-  enable_bintest
-  enable_test
-
-  conf.gembox 'default'
-  conf.gem "#{rootdir}"
-end
