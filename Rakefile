@@ -24,14 +24,14 @@ def github(repo)
   end
 end
 
-github "mobiruby/mruby-cfunc"
+github "fundamental/mruby-cfunc"
+github "wanabe/mruby-rubyffi-compat"
+github "wanabe/mruby-gobject-introspection"
 github "ppibburr/mruby-allocate"
-github "ppibburr/mruby-girffi"
-github "ppibburr/mruby-gobject-introspection"
-github "ppibburr/mruby-gtk3"
 github "ppibburr/mruby-named-constants"
-github "ppibburr/mruby-rubyffi-compat"
-github "mruby/mruby"
+github "ppibburr/mruby-girffi"
+github "ppibburr/mruby-gtk3"
+github "wanabe/mruby"
 
 task :default => :all
 
