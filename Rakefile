@@ -44,6 +44,7 @@ github "ppibburr/mruby-gtk3"
 github "mruby/mruby"
 github "wanabe/brtk-base"
 github "wanabe/brtk-minimal"
+github "wanabe/brtk-url-bar"
 
 task :default => :all
 
