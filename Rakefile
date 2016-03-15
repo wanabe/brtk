@@ -24,6 +24,16 @@ def github(repo)
   end
 end
 
+def chdir(dir)
+  return yield if dir == "."
+
+  Dir.chdir(dir) do
+    puts "(Enter #{dir}...)"
+    yield
+    puts "(Leave #{dir}...)"
+  end
+end
+
 github "fundamental/mruby-cfunc"
 github "wanabe/mruby-rubyffi-compat"
 github "wanabe/mruby-gobject-introspection"
@@ -52,3 +62,12 @@ mruby :test
 
 desc "clean"
 mruby :clean
+
+desc "pull"
+task :pull => @vendors + ["."] do |t|
+  t.prerequisites.each do |dir|
+    chdir(dir) do
+      sh "git pull"
+    end
+  end
+end

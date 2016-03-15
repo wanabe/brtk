@@ -12,3 +12,7 @@ test : all
 clean :
 	$(RAKE) clean
 .PHONY : clean
+
+pull :
+	$(RAKE) pull
+.PHONY : pull
