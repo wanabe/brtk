@@ -31,7 +31,7 @@ github "ppibburr/mruby-allocate"
 github "ppibburr/mruby-named-constants"
 github "ppibburr/mruby-girffi"
 github "ppibburr/mruby-gtk3"
-github "wanabe/mruby"
+github "mruby/mruby"
 
 task :default => :all
 
