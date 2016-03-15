@@ -7,6 +7,9 @@ class Brtk
   end
 
   def main
+    @widgets.each do |klass, widget|
+      widget.run
+    end
     Gtk.main
   end
 
