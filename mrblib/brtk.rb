@@ -19,6 +19,7 @@ class Brtk
       new(uri).main
     rescue Exception => e
       p e
+      puts *e.backtrace
     end
   end
 end
