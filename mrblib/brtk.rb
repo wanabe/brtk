@@ -13,6 +13,14 @@ class Brtk
     Gtk.main
   end
 
+  def send_uri(uri, option = {})
+    except = option[:except] || []
+    @widgets.each do |klass, widget|
+      next if except.include? widget
+      widget.uri = uri
+    end
+  end
+
   def []=(klass, widget)
     @widgets[klass] = widget
   end
