@@ -3,7 +3,7 @@ class Brtk
     @widgets = {}
     Gtk.init
     MainWindow.new(self)
-    @widgets[WebRenderer].open uri if uri
+    send_uri uri if uri
   end
 
   def main
