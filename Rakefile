@@ -42,6 +42,8 @@ github "ppibburr/mruby-named-constants"
 github "ppibburr/mruby-girffi"
 github "ppibburr/mruby-gtk3"
 github "mruby/mruby"
+github "wanabe/brtk-base"
+github "wanabe/brtk-minimal"
 
 task :default => :all
 

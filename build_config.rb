@@ -30,4 +30,6 @@ MRuby::Build.new do |conf|
   conf.try_gem "#{vendor}/mruby-named-constants"
   conf.try_gem "#{vendor}/mruby-girffi"
   conf.try_gem "#{vendor}/mruby-gtk3"
+  conf.try_gem "#{vendor}/brtk-base"
+  conf.try_gem "#{vendor}/brtk-minimal"
 end
